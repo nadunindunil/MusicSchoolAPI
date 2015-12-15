@@ -56,6 +56,27 @@ app.get('/getTeachersDetails', function(req, res){
 
 });
 
+////////////////////////////////////////////////////////////////
+
+app.post('/insertStudent', function (req, res) {
+
+  var post  = {
+    ID: req.body.ID, 
+    name: req.body.name,
+    gender: req.body.gender,
+    DOB: req.body.DOB,
+    access_level: req.body.access_level,
+    course_ID: req.body.course_ID,
+    performance_group_ID:req.body.performance_group_ID,
+    phone_number_id:req.body.phone_number_id };
+
+  var query = connection.query('INSERT INTO student SET ?', post, function(err, result) {
+    // Neat!
+  });
+  console.log(query.sql);
+  res.end('done');
+    
+});
 
 // var notifi= new mongoose.Schema({
 //   Time: Date,
