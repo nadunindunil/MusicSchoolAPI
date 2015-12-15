@@ -42,6 +42,19 @@ app.get('/getStudentsDetails', function(req, res){
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+app.get('/getTeachersDetails', function(req, res){
+  //connection.connect();
+
+  connection.query('SELECT * FROM teacher', function(err, rows, fields) {
+    if (err) throw err;
+    res.json(rows);
+    console.log('The solution is: ', rows);
+  });
+  
+  //connection.end();
+  
+
+});
 
 
 // var notifi= new mongoose.Schema({
