@@ -124,6 +124,20 @@ app.get('/findTelNum/:id', function(req, res){
 
 app.post('/insertStudent', function (req, res) {
   console.log(req.body.name);
+  
+  var post2 ={
+      number_ID: req.body.ID,
+      location: req.body.location,
+      phone_number: req.body.phone_number
+
+  }
+
+  var query = connection.query('INSERT INTO phone_numbers SET ?', post2, function(err, result) {
+    // Neat!
+  });
+
+  console.log(query.sql);
+
   var post  = {
     ID: req.body.ID, 
     name: req.body.name,
@@ -137,7 +151,7 @@ app.post('/insertStudent', function (req, res) {
   var query = connection.query('INSERT INTO student SET ?', post, function(err, result) {
     // Neat!
   });
-  //console.log(query.sql);
+  console.log(query.sql);
   res.end('done');
     
 });
@@ -145,72 +159,21 @@ app.post('/insertStudent', function (req, res) {
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
-app.post('/insertTelNum', function (req, res) {
+// app.post('/insertTelNum', function (req, res) {
 
-  var post  = {
-    number_ID: req.body.ID, 
-    location: req.body.location,
-    phone_number: req.body.phone_number
-    };
+//   var post  = {
+//     number_ID: req.body.ID, 
+//     location: req.body.location,
+//     phone_number: req.body.phone_number
+//     };
 
-  var query = connection.query('INSERT INTO phone_numbers SET ?', post, function(err, result) {
-    // Neat!
-  });
-  console.log(query.sql);
-  res.end('done');
+//   var query = connection.query('INSERT INTO phone_numbers SET ?', post, function(err, result) {
+//     // Neat!
+//   });
+//   console.log(query.sql);
+//   res.end('done');
     
-});
-
-// var notifi= new mongoose.Schema({
-//   Time: Date,
-//   Info : String
-// })
-
-// var notification = mongoose.model('notifi',notifi);
-
-// app.post('/createNotifi', function (req, res) {
-  
-//     var current = new Date();
-//     current.setHours(current.getHours() + 6);
-    
-     
-//     var add = new notification({
-//       //num : {type: Number, unique: true},
-//       Time : current,
-//       Info : req.body.info 
-//     });
-  
-//     add.save(function (err) {
-//       if (err) // ...
-//       console.log('done')
-//       res.end('Done')
-//     });
 // });
-
-
-
-// app.get('/getNotifi', function(req, res){
-  
-//   notification.find({}, 'Time Info -_id', function (err, notifi) {     
-//    res.json(notifi);})
-
-// });
-
-
-
-
-
-// app.get('/sample', function(req, res){
-//     var v = 0;
-//     var x = 1;
-    
-//     if(v==0){
-//             if(x==1){   res.end("sfa") ; }
-//             else {console.log("fasaf");}  
-//     }
-
-// });
-
 
 
 
