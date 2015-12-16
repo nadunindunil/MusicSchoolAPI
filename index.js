@@ -156,6 +156,41 @@ app.post('/insertStudent', function (req, res) {
     
 });
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.post('/insertTeacher', function (req, res) {
+  console.log(req.body.name);
+  
+  var post2 ={
+      number_ID: req.body.ID,
+      location: req.body.location,
+      phone_number: req.body.phone_number
+
+  }
+
+  var query = connection.query('INSERT INTO phone_numbers SET ?', post2, function(err, result) {
+    // Neat!
+  });
+
+  console.log(query.sql);
+
+  var post  = {
+    teacher_ID: req.body.ID, 
+    name: req.body.name,
+    gender: req.body.gender,
+    DOB: req.body.DOB,
+    access_level: req.body.access_level,
+    phone_number_id:req.body.phone_number_id,
+    NID:req.body.nic };
+
+  var query = connection.query('INSERT INTO teacher SET ?', post, function(err, result) {
+    // Neat!
+  });
+  console.log(query.sql);
+  res.end('done');
+    
+});
 //////////////////////////////////////////////////////////////////////////////////////////////
 
 
