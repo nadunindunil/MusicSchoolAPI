@@ -26,7 +26,7 @@ var connection = mysql.createConnection({
 
 
 
-app.get('/getStudentsDetails', function(req, res){
+app.get('/getStudentsList', function(req, res){
   //connection.connect();
 
   connection.query('SELECT * FROM student', function(err, rows, fields) {
@@ -42,7 +42,7 @@ app.get('/getStudentsDetails', function(req, res){
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get('/getTeachersDetails', function(req, res){
+app.get('/getTeachersList', function(req, res){
   //connection.connect();
 
   connection.query('SELECT * FROM teacher', function(err, rows, fields) {
@@ -56,7 +56,23 @@ app.get('/getTeachersDetails', function(req, res){
 
 });
 
-////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get('/getCoursesList', function(req, res){
+  //connection.connect();
+
+  connection.query('SELECT * FROM course', function(err, rows, fields) {
+    if (err) throw err;
+    res.json(rows);
+    console.log('The solution is: ', rows);
+  });
+  
+  //connection.end();
+  
+
+});
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 app.post('/insertStudent', function (req, res) {
 
@@ -77,6 +93,8 @@ app.post('/insertStudent', function (req, res) {
   res.end('done');
     
 });
+
+//////////////////////////////////////////////////////////////////////////////////////////////
 
 // var notifi= new mongoose.Schema({
 //   Time: Date,
