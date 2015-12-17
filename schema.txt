@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `teacher` (
   `DOB` date NOT NULL,
   `gender` ENUM('MALE','FEMALE') NOT NULL ,
   `NID` varchar(10) NOT NULL,
-  `phone_number_id` varchar(3) NOT NULL,
+  `phone_number_id` varchar(7) NOT NULL,
   `access_level` ENUM('user','admin') NOT NULL ,
   PRIMARY KEY (`teacher_ID`),
   UNIQUE KEY `NID` (`NID`),
@@ -151,7 +151,7 @@ CREATE TABLE IF NOT EXISTS `parents` (
   `name` varchar(40) NOT NULL,
   `child_ID` varchar(7) NOT NULL,
   `gender` ENUM('MALE','FEMALE') NOT NULL,
-  `phone_number_id` varchar(3) NOT NULL,
+  `phone_number_id` varchar(7) NOT NULL,
   PRIMARY KEY (`NID`),
   FOREIGN KEY (`child_ID`) 
     REFERENCES `student` (`ID`),
